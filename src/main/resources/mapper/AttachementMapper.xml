@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+ classpath:mapper/ProjectMapper.xml
+ -->
+<mapper namespace="cn.tedu.ttms.attachement.dao.AttachementDao">
+
+    <select id="findObjects" 
+    resultType="cn.tedu.ttms.attachement.entity.Attachement">
+       select *
+       from tms_attachements
+    </select>
+    
+</mapper> 
