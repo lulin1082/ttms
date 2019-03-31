@@ -2,8 +2,10 @@ package cn.tedu.ttms.attachement.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
+
 /**附件对象*/
-public class Attachement implements Serializable{
+public class Attachement implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	/**附件标题*/
@@ -16,10 +18,12 @@ public class Attachement implements Serializable{
 	private String filePath;
 	/**文件摘要信息*/
 	private String fileDisgest;
+
 	/**附件类型(1:产品附件,2:渠道商附件,3:供应商附件)*/
 	private Integer athType;
 	/**附件具体关联对象(例如属于具体的哪个产品)*/
 	private Integer belongId;
+
 	/**附件的创建时间*/
 	private Date createdTime;
 	/**附件的修改时间*/
@@ -28,6 +32,7 @@ public class Attachement implements Serializable{
 	private String createdUser;
 	/**附件的修改人*/
     private String modifiedUser;
+
 	public Integer getId() {
 		return id;
 	}

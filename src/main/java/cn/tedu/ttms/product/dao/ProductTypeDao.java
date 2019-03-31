@@ -5,17 +5,17 @@ import java.util.Map;
 
 import cn.tedu.ttms.common.dao.BaseDao;
 import cn.tedu.ttms.product.entity.ProductType;
+import org.springframework.stereotype.Repository;
+
 /**产品分类*/
 
+@Repository
+public interface ProductTypeDao extends BaseDao<ProductType>{
 
-public interface ProductTypeDao extends 
-    BaseDao<ProductType>{
 	List<Map<String,Object>> findObjects();
-	
 	/**查找zTree nodes 节点*/
 	List<Map<String,Object>> findTreeNodes();
-	
-	Map<String,Object> findObjectById(Integer id);
-	
+
+	//Map<String, Object> findObjectById(Integer id);
 }
 

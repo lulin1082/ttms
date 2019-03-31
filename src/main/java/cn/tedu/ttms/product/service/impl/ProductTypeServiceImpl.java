@@ -2,14 +2,16 @@ package cn.tedu.ttms.product.service.impl;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
-import org.springframework.stereotype.Service;
 
 import cn.tedu.ttms.common.exception.SaveRuntimeException;
 import cn.tedu.ttms.common.exception.UpdateRuntimeException;
 import cn.tedu.ttms.product.dao.ProductTypeDao;
 import cn.tedu.ttms.product.entity.ProductType;
 import cn.tedu.ttms.product.service.ProductTypeService;
-@Service
+import org.springframework.stereotype.Service;
+
+
+@Service("productTypeService")
 public class ProductTypeServiceImpl implements ProductTypeService{
     @Resource
 	private ProductTypeDao productTypeDao;
@@ -19,8 +21,7 @@ public class ProductTypeServiceImpl implements ProductTypeService{
 	}
 	@Override
 	public List<Map<String, Object>> findTreeNodes() {
-		List<Map<String,Object>> map=
-				productTypeDao.findTreeNodes();
+		List<Map<String,Object>> map= productTypeDao.findTreeNodes();
 	    System.out.println("map="+map);
 	    return map;
 	}
@@ -32,11 +33,10 @@ public class ProductTypeServiceImpl implements ProductTypeService{
 	}
 	/**根据id查找分类信息*/
 	@Override
-	public Map<String, Object> findObjectById(Integer id) {
+	public Map<String,Object> findObjectById(Long id) {
 		if(id==null)
 	    throw new RuntimeException("id can not be null");
-		Map<String,Object> map=
-		productTypeDao.findObjectById(id);
+		Map<String,Object> map= productTypeDao.findObjectById(id);
 		return map;
 	}
 	/**更新产品分类信息*/
@@ -46,5 +46,5 @@ public class ProductTypeServiceImpl implements ProductTypeService{
 		if(rows==-1)
 		throw new UpdateRuntimeException("更新失败");
 	}
-	
+
 }

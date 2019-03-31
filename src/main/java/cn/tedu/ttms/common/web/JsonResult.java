@@ -26,6 +26,12 @@ public class JsonResult {
 		this.state=ERROR;
 		this.message=e.getMessage();
 	}
+
+	public JsonResult(int state,Throwable cause){
+		this.message=cause.getMessage();
+		this.state=state;
+	}
+
 	public String getMessage() {
 		return message;
 	}

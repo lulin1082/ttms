@@ -22,6 +22,6 @@ public interface AttachementService {
 		  MultipartFile mFile,
 		  String serverPath);
 	
-	File findObjectById(Integer id);
+	File findObjectById(Long id);
 	
 }

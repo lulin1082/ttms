@@ -22,7 +22,7 @@ public interface ProjectService {
   void  saveObject(Project project);
   
   /**根据id查找project对象*/
-  Project findObjectById(Integer id);
+  Map<String, Object> findObjectById(Long id);
   /**修改项目信息*/
   void updateObject(Project project);
   

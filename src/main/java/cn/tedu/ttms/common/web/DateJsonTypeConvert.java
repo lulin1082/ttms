@@ -18,15 +18,10 @@ import com.fasterxml.jackson.databind.SerializerProvider;
  * @JsonSerialize(using=DateJsonTypeConvert.class)
  * @author Admin
  */
-public class DateJsonTypeConvert extends 
-   JsonSerializer<Date> {
+public class DateJsonTypeConvert extends JsonSerializer<Date> {
 	//用于序列化字符串(例如转换为json格式)
 	@Override
-	public void serialize(Date arg0, 
-			JsonGenerator arg1,
-			SerializerProvider arg2)
-			throws IOException, 
-			JsonProcessingException {
+	public void serialize(Date arg0, JsonGenerator arg1, SerializerProvider arg2) throws IOException, JsonProcessingException {
 		//自己定义日期格式
 		SimpleDateFormat sdf=
 		new SimpleDateFormat("yyyy/MM/dd");

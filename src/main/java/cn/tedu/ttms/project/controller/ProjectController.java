@@ -6,8 +6,11 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,10 +26,16 @@ import cn.tedu.ttms.project.service.ProjectService;
 public class ProjectController {
 	@Resource
 	private ProjectService projectService;
+
+
+	@RequiresGuest
 	@RequestMapping("/listUI")
 	public String listUI(){
+		System.out.println("you get it");
 		return "project/project_list";
 	}
+
+
 	@RequestMapping("/editUI")
 	public String editUI(){
 		return "project/project_edit";
@@ -56,9 +65,8 @@ public class ProjectController {
 	@RequestMapping("/doFindById")
 	@ResponseBody
 	public JsonResult doFindProjectById(
-			Integer id){
-	    Project project=
-	    projectService.findObjectById(id);
+			Long id){
+	    Map<String, Object> project= projectService.findObjectById(id);
 		return new JsonResult(project);
 	}
 	/**修改项目信息*/

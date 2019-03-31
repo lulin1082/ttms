@@ -5,10 +5,16 @@
  -->
 <mapper namespace="cn.tedu.ttms.attachement.dao.AttachementDao">
 
-    <select id="findObjects" 
-    resultType="cn.tedu.ttms.attachement.entity.Attachement">
-       select *
-       from tms_attachements
+    <select id="findObjects" resultType="cn.tedu.ttms.attachement.entity.Attachement">
+       select * from tms_attachements
     </select>
-    
+
+    <select id="findById"  resultType="cn.tedu.ttms.attachement.entity.Attachement">
+            select * from tms_attachements where id=#{id};
+    </select>
+
+    <select id="findObjectByDisgest" resultType="cn.tedu.ttms.attachement.entity.Attachement">
+           select * from tms_attachements where fileDisgest=#{fileDigest};
+    </select>
+
 </mapper> 

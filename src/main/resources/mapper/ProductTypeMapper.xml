@@ -42,6 +42,7 @@
          now(),
          now())
     </insert>
+
     <update id="updateObject"
      parameterType=
     "cn.tedu.ttms.product.entity.ProductType">

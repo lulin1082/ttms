@@ -8,8 +8,7 @@
   <!-- 查询项目信息 -->
   <select id="findObjects" 
    resultType="cn.tedu.ttms.project.entity.Project">
-      select * 
-      from tms_projects
+      select * from tms_projects
   </select>
   <!-- 查询项目信息 -->
   <select id="findPageObjects" 
@@ -17,11 +16,11 @@
       select * 
       from tms_projects p
       <where>
-        <if test="project.name!=null and project.name!=''">
-             p.name like CONCAT ("%",#{project.name},"%")
+        <if test="name!=null and name!=''">
+             p.name like CONCAT ("%",#{cn.tedu.ttms.project.name},"%")
         </if>
-        <if test="project.valid!=null">
-            and p.valid=#{project.valid}
+        <if test="valid!=null">
+            and p.valid=#{cn.tedu.ttms.project.valid}
         </if>
       </where>
       ORDER BY p.createdTime DESC
@@ -101,12 +100,8 @@
   where id=#{id};
   </update>
  <!-- 根据id查找项目对象 -->
- <select id="findObjectById" 
-  parameterType="java.lang.Integer"
-  resultType="cn.tedu.ttms.project.entity.Project">
-    select *
-    from tms_projects
-    where id=#{id}
+ <select id="findObjectById" parameterType="java.lang.Integer"  resultType="cn.tedu.ttms.project.entity.Project">
+    select * from tms_projects where id=#{id}
  </select>
  
  <!-- 查询状态是启用的项目的id和名字 ,通常是

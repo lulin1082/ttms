@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +16,7 @@ import cn.tedu.ttms.team.service.TeamService;
 
 @Controller
 @RequestMapping("/team")
+@RequiresAuthentication
 public class TeamController {
 	@Resource
     private TeamService teamService;
@@ -38,7 +40,7 @@ public class TeamController {
 				teamService.findPageObjects(
 				projectName, valid,
 				pageCurrent);
-		
+
 		return new JsonResult(map);
 	}
 	/**保存团信息*/

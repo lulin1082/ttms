@@ -8,15 +8,16 @@ import java.io.Serializable;
  * 4).....
  * */
 public class PageObject implements Serializable {
+
 	private static final long serialVersionUID = -8753809986545361268L;
-    /**当前页*/
+	/**当前页*/
 	private int pageCurrent=1;
 	/**记录数(表中有多少条记录)*/
 	private int rowCount;
 	/**总页数*/
 	private int pageCount;
 	/**每页要显示的记录数*/
-	private int pageSize=2;
+	private int pageSize=5;
 	/**取下页数据的起始记录*/
 	private int startIndex;
 	
