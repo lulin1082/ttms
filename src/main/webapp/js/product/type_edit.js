@@ -12,7 +12,7 @@ var setting = {
 }
 
 $(document).ready(function(){
-	$("#editTypeForm").on("click",".load-cn.tedu.ttms.product-type",loadTypeTree);
+	$("#editTypeForm").on("click",".load-product-type",loadTypeTree);
 	$("#typeLayer").on("click",".btn-cancle",hideTypeTree);
 	$("#typeLayer").on("click",".btn-confirm",setSelectedTypeNode);
     $("#btn-save").click(doSaveOrUpdate);

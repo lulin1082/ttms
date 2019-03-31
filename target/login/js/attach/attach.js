@@ -16,6 +16,7 @@ function doGetObjects(){
 	var url="attach/doFindObjects.do";
 	$.post(url,function(result){
 		if(result.state==1){
+			debugger;
 		 setTableRows(result.data);
 		}else{
 		 alert(result.message);
@@ -47,15 +48,18 @@ function setTableRows(list){
 function doUpload(){
 	var url="attach/doSaveObject.do";
 	//异步提交表单(先确保jquery.form.js已经引入了)
+	debugger;
 	$("#uploadFormId").ajaxSubmit({
 		type:'post',
 		url:url,
 		data:{"athType":1,"belongId":1},
 		dataType:'json',
 		success:function(result){
+
 			if(result.state==1){
+				debugger;
 			alert("upload ok");
-			doGetObjects();
+                doGetObjects();
 			}else{
 			alert(result.message);
 			}

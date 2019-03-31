@@ -40,11 +40,11 @@ public class ProjectController {
 	public String editUI(){
 		return "project/project_edit";
 	}
+
 	@RequestMapping("/findPageObjects")
 	@ResponseBody
 	public JsonResult doFindPageObjects(Project project,PageObject pageObject){//pageCurrent
-		Map<String,Object> map= projectService.
-			findPageObjects(project,pageObject);
+		Map<String,Object> map= projectService.findPageObjects(project,pageObject);
 	    return new JsonResult(map);//state=1,message=ok,data=map
 	}
 	/**启用禁用*/

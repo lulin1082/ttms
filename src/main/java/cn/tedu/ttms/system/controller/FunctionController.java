@@ -25,7 +25,7 @@ public class FunctionController {
     private FunctionService functionService;
 
     @RequestMapping("listUI")
-    @RequiresPermissions("sys:function:view")
+    //@RequiresPermissions("sys:function:view")
     public String listUI(){
         return "system/function_list";
     }

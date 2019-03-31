@@ -7,16 +7,13 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
-
     <context:component-scan base-package="cn.tedu.ttms"/>
-
     <!-- Mapper接口所在包，Spring会自动查找其下的Mapper -->
     <import resource="spring-mybatis.xml"/>
     <import resource="spring-redis.xml"/>
     <import resource="spring-pool.xml"/>
     <import resource="spring-mvc.xml"/>
-
-    <!-- shiro工厂bean配置 -->
+    <!--= shiro工厂bean配置 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <!-- shiro的核心安全接口 -->
         <property name="securityManager" ref="securityManager"/>
@@ -32,10 +29,11 @@
         <property name="filterChainDefinitions">
             <value>
                 <!-- 对静态资源设置允许匿名访问 -->
-
+                /  =anon
                 /toLogin.do =   anon
                 /indexUI.do = anon
                 /images/** = anon
+                /WEB-INF/pages/** = anon
                 /js/** = anon
                 /css/** = anon
                 /static/** = anon
@@ -46,7 +44,7 @@
                 <!-- 退出 -->
                 /logout.do = logout  <!-- 会调用Subject的logout方法,此方法会将session清空 -->
                 <!-- 剩余其他路径，必须认证通过才可以访问 -->
-                /** = authc
+                /** = anon
             </value>
         </property>
     </bean>

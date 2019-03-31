@@ -9,7 +9,7 @@ $("#queryFormId").on("click",".btn-add,.btn-update",showEditDialog);
 });
 //显示编辑模态框
 function showEditDialog(){
-	var url="cn.tedu.ttms.project/editUI.do";
+	var url="project/editUI.do";
 	var title;
 	if($(this).hasClass("btn-add")){
 		title="添加项目"
@@ -33,7 +33,7 @@ function showEditDialog(){
 
 //获取项目信息
 function doGetObjects(){
-  var url="cn.tedu.ttms.project/findPageObjects.do";//findPageObject(Project cn.tedu.ttms.project,PageObject object)
+  var url="project/findPageObjects.do";//findPageObject(Project cn.tedu.ttms.project,PageObject object)
   //获得查询参数
   var params=getQueryFormData();
   var pageCurrent=$("#pageId").data("pageCurrent");

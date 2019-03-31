@@ -15,7 +15,7 @@ $(document).ready(function(){
 })
 //根据id查找project对象
 function doGetObjectById(id){
-	var url="cn.tedu.ttms.project/doFindById.do";
+	var url="project/doFindById.do";
 	var params={"id":id};
 	$.post(url,params,function(result){
 		if(result.state==1){
@@ -50,7 +50,7 @@ function doSaveOrUpdate(){
 	var params=doGetEditFormData();
 	//2.将数据提交到服务端
 	var id=$("#modal-dialog").data("id");
-	var url=id?"cn.tedu.ttms.project/doUpdateProject.do":"cn.tedu.ttms.project/doSaveProject.do";
+	var url=id?"project/doUpdateProject.do":"project/doSaveProject.do";
 	$.post(url,params,function(result){
 		if(result.state==1){
 			//1)隐藏模态框

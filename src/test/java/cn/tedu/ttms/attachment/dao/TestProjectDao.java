@@ -90,8 +90,23 @@ public class TestProjectDao extends BaseDaoTest {
 		/*int rows=dao.updateObject();
 		Assert.assertEquals(1, rows);*/
 	}
-	
-	
+
+	@Test
+	public void findPageObjects(){
+
+		PageObject pageObject = new PageObject();
+		System.out.println(	pageObject.getStartIndex()+" ::  "+pageObject.getPageSize());
+
+
+		/*ProjectDao dao=(ProjectDao) ctx.getBean("projectDao");
+		pageObject=new PageObject();
+		Project project=new Project();
+		pageObject.setRowCount(dao.getRowCount(project));
+		pageObject.setPageCurrent(2);
+		List list=dao.findPageObjects(project,pageObject);
+		System.out.println(list);*/
+
+	}
 
 }
 //DB-->ProjectMapper.xml-->ProjectDao-->ProjectService--->ProjectController-->页面

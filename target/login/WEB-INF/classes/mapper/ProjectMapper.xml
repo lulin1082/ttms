@@ -16,11 +16,11 @@
       select * 
       from tms_projects p
       <where>
-        <if test="name!=null and name!=''">
-             p.name like CONCAT ("%",#{cn.tedu.ttms.project.name},"%")
+        <if test="project.name!=null and project.name!=''">
+             p.name like CONCAT ("%",#{project.name},"%")
         </if>
-        <if test="valid!=null">
-            and p.valid=#{cn.tedu.ttms.project.valid}
+        <if test="project.valid!=null">
+            and p.valid=#{project.valid}
         </if>
       </where>
       ORDER BY p.createdTime DESC

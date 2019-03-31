@@ -25,7 +25,7 @@ public class RoleController {
     private RoleService roleService;
 
     @RequestMapping("listUI")
-    @RequiresPermissions("sys:role:view")
+  //  @RequiresPermissions("sys:role:view")
     public String listUI(){
         return "system/role_list";
     }
