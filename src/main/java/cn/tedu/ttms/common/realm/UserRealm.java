@@ -17,6 +17,8 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.Resource;
 import java.util.HashSet;
@@ -35,6 +37,7 @@ import java.util.Set;
 
 public class UserRealm extends AuthorizingRealm {
 
+    private final static Logger logger = LoggerFactory.getLogger(UserRealm.class);
 
     @Autowired
     private  LoginService loginService;
@@ -99,11 +102,16 @@ public class UserRealm extends AuthorizingRealm {
 
 
     private Set<String> getRolesByUserName(Long id) {
+
+        logger.info("Log从数据库中获取授权Roles数据");
+        System.out.println("Log从数据库中获取授权Roles数据");
         List<String> list = usersDao.findRole(id);
         return new HashSet<String>(list);
     }
 
     private Set<String> getPermissionsByUsername(Long id) {
+        logger.info("Log从数据库中获取授权Permission数据");
+        System.out.println("Log从数据库中获取授权Permission数据");
         List<String> list = usersDao.findPermission(id);
         return new HashSet<String>(list);
     }

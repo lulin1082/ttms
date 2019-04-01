@@ -16,8 +16,8 @@
         <org.mybatis.version>3.5.0</org.mybatis.version>
         <commons-lang.version>2.6</commons-lang.version>
        <!-- <slf4j.version>1.7.26</slf4j.version>-->
-        <slf4j.version>1.7.12</slf4j.version>
-        <log4j.version>2.1</log4j.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <log4j.version>2.7</log4j.version>
         <spring.version>5.1.5.RELEASE</spring.version>
         <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
 
@@ -31,11 +31,11 @@
         <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
         <!-- 整合log4j2,目的是便于我们根据日志的输出调试代码 一般添加完依赖会在类路径添加一个log4j2.xml文件 -->
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.7</version>
-        </dependency>-->
+            <version>${log4j.version}</version>
+        </dependency>
 
         <!--log4j相关配置开始-->
         <dependency>
@@ -350,11 +350,11 @@
         </dependency>
 
 
-        <dependency>
+       <!-- <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.0.4</version>
-        </dependency>
+        </dependency>-->
         <!-- https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient -->
         <dependency>
             <groupId>commons-httpclient</groupId>
@@ -367,6 +367,13 @@
             <artifactId>commons-codec</artifactId>
             <version>1.12</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.directory.studio</groupId>
+            <artifactId>org.apache.commons.collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -389,11 +396,7 @@
             <version>1.4.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.directory.studio</groupId>
-            <artifactId>org.apache.commons.collections</artifactId>
-            <version>3.2.1</version>
-        </dependency>
+
     </dependencies>
     <!--
     0. 创建maven项目,生成web.xml部署文件

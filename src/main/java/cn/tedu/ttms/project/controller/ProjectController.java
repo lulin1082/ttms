@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresGuest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import cn.tedu.ttms.common.web.JsonResult;
 import cn.tedu.ttms.common.web.PageObject;
@@ -23,13 +21,15 @@ import cn.tedu.ttms.project.service.ProjectService;
  */
 @Controller
 @RequestMapping("/project")
+@RequiresGuest
 public class ProjectController {
-	@Resource
+
+	@Autowired
 	private ProjectService projectService;
 
 
 	@RequiresGuest
-	@RequestMapping("/listUI")
+	@GetMapping("/listUI")
 	public String listUI(){
 		System.out.println("you get it");
 		return "project/project_list";
@@ -64,6 +64,7 @@ public class ProjectController {
 	/**查找项目信息*/
 	@RequestMapping("/doFindById")
 	@ResponseBody
+	@RequiresAuthentication
 	public JsonResult doFindProjectById(
 			Long id){
 	    Map<String, Object> project= projectService.findObjectById(id);

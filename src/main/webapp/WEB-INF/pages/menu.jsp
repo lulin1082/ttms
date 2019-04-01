@@ -42,7 +42,7 @@
 					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a  id="tipslogin"  src="toLogin.do">请登录</a></li>
+				<li><a  id="tipslogin"  href="toLogin.do?="+Maht.random(1000) >请登录</a></li>
 				<li><a  id="welcome">欢迎您,${currentUser.usrname}</a></li>
 				<li><a href="/logout.do?t="+Maht.random(1000) >安全退出</a></li>
 			</ul>

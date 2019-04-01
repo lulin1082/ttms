@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-ear" name="ttms2.0:war">
+  <artifact type="war" name="ttms2.0:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="root">
+    <root id="archive" name="login.war">
       <element id="artifact" artifact-name="ttms2.0:war exploded" />
     </root>
   </artifact>

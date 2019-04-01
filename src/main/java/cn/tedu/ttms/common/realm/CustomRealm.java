@@ -8,8 +8,11 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -19,6 +22,8 @@ import java.util.*;
  * @Version 1.0
  */
 public class CustomRealm extends AuthorizingRealm {
+
+    private final static Logger logger = LoggerFactory.getLogger(CustomRealm.class);
     Map<String, String> userMap = new HashMap<>(16);
 
     {
@@ -52,7 +57,6 @@ public class CustomRealm extends AuthorizingRealm {
 
     private Set<String> getRolesByUserName(String username) {
         Set<String> set = new HashSet<>();
-        // 从数据库或者缓存中获取角色数据
         set.add("admin");
         set.add("user");
         return set;

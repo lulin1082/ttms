@@ -3,6 +3,7 @@ package cn.tedu.ttms.system.controller;
 import cn.tedu.ttms.common.web.JsonResult;
 import cn.tedu.ttms.system.entity.Function;
 import cn.tedu.ttms.system.service.FunctionService;
+import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/function")
+@RequiresGuest
 public class FunctionController {
 
 

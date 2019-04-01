@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+ classpath:mapper/ProjectMapper.xml
+ -->
+<mapper namespace="cn.tedu.ttms.system.dao.RoleFunctionDao">
+
+    <!-- 保存角色菜单关系 -->
+    <insert id="saveRoleList" >
+        INSERT INTO sys_role_function (role_id, function_id)
+        VALUE
+        <foreach collection="functionIdList" separator=","  item="item">
+            (#{roleId},#{item})
+        </foreach>
+
+
+    </insert>
+
+
+    <insert id="saveObject" >
+        INSERT INTO sys_role_function (role_id, function_id)
+        VALUE
+        <foreach collection="functionIdList" separator=","  item="item">
+            (#{roleId},#{item})
+        </foreach>
+
+
+    </insert>
+
+    <!-- 根据roleId查询menuIdList -->
+    <select id="findRelatedIdListById" resultType="java.lang.Integer">
+        SELECT r_r.resource_id FROM  sys_role_function r_r WHERE r_r.role_id=#{roleId}
+    </select>
+
+    <!-- 删除关系表数据 ：根据roleid删除 -->
+    <delete id="deleteObject" parameterType="java.lang.Integer">
+        delete from sys_role_function WHERE role_id=#{id}
+    </delete>
+
+
+</mapper>

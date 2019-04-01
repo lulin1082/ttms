@@ -24,9 +24,6 @@ public class JedisUtil {
     @Autowired
     private JedisPool jedisPool;
 
-    private Jedis jedis;
-
-
 
     public void setJedisPool(JedisPool jedisPool) {
         this.jedisPool = jedisPool;

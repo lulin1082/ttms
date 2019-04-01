@@ -9,14 +9,14 @@ public class BaseDaoTest {
 	@Before
 	public void init(){
 		 ctx=new ClassPathXmlApplicationContext(
-		"spring.xml");
+				 "spring-shiro.xml");
 	}
 
 	/*
 			"spring-pool.xml",
 			"spring-mybatis.xml",
 			"mybatis-config.xml","spring-redis.xml",
-			"spring.xml"*/
+			"spring-shiro.xml"*/
 
 
 	//销毁context(也可以先不写)

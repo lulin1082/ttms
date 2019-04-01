@@ -3,6 +3,9 @@ package cn.tedu.ttms.common.cache;
 import cn.tedu.ttms.common.util.JedisUtil;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
+import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.SerializationUtils;
@@ -50,12 +53,9 @@ public class RedisCache<K,V> implements Cache<K,V> {
 
     private  final String CACHE_PREFIX ="cache_prefix";
 
-    private byte[ ] getKey (K k){
-        if (k instanceof  String){
-            return (this.CACHE_PREFIX+k).getBytes();
-        }
-        return SerializationUtils.serialize(k);
-    }
+    private final static Logger logger = LoggerFactory.getLogger(RedisCache.class);
+
+
 
     @Override
     public V get(K k) throws CacheException {
@@ -64,10 +64,13 @@ public class RedisCache<K,V> implements Cache<K,V> {
             byte[] value=concurrentHashMap.get(key);
             if(value!=null)
             {
+                logger.info("从本地内存中获取");
                 System.out.println("从本地内存中获取");
                 return  (V) SerializationUtils.deserialize(value);
             }
         }else{
+            System.out.println("从redis获取");
+            logger.info("从redis获取");
             byte[] value2=jedisUtil.get(key);
             if(value2!=null){
                 return (V)SerializationUtils.deserialize(value2);
@@ -92,6 +95,8 @@ public class RedisCache<K,V> implements Cache<K,V> {
     public V remove(K k) throws CacheException {
         byte[] key=getKey(k);
         byte[] value=jedisUtil.get(key);
+        this.concurrentHashMap.remove(key);
+
         jedisUtil.delte(key);
         if(value!=null){
             return (V) SerializationUtils.deserialize(value);
@@ -134,5 +139,16 @@ public class RedisCache<K,V> implements Cache<K,V> {
     public Collection<V> values() {
         //
         return null;
+    }
+
+
+
+    private byte[ ] getKey (K k){
+
+
+        if (k instanceof  String){
+            return (this.CACHE_PREFIX+k).getBytes();
+        }
+        return SerializationUtils.serialize(k);
     }
 }

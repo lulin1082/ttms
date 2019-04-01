@@ -26,9 +26,9 @@ public class RedisSessionDao extends AbstractSessionDAO {
 
     private final static Logger logger = LoggerFactory.getLogger(AbstractSessionDAO.class);
 
-    @Resource
+    /*@Resource
     private JedisPool jedisPool;
-
+*/
     @Resource
     private JedisUtil jedisUtil;
 
@@ -60,7 +60,7 @@ public class RedisSessionDao extends AbstractSessionDAO {
 
     @Override
     protected Session doReadSession(Serializable sessionId) {
-        logger.info("getSession");
+        logger.info("ttms 管理系统 getSession");
 
         if (sessionId == null) {
             return null;

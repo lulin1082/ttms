@@ -22,6 +22,8 @@ public class RedisCacheManager implements CacheManager {
 
     @Override
     public <K, V> Cache<K, V> getCache(String s) throws CacheException {
+        System.out.println("从 redis 获取权限数据");
+
         return redisCache;
     }
 }
